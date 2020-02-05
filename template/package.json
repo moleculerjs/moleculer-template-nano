@@ -1,12 +1,12 @@
 {
   "name": "{{projectName}}",
   "version": "1.0.0",
-  "description": "My Moleculer microservice",
+  "description": "My Moleculer-based microservice",
   "scripts": {
     "dev": "moleculer-runner --repl --hot service.js",
-    "start": "moleculer-runner service.js"{{#jest}},
+    "start": "moleculer-runner service.js",
     "ci": "jest --watch",
-    "test": "jest --coverage"{{/jest}}{{#lint}},
+    "test": "jest --coverage"{{#lint}},
     "lint": "eslint services"{{/lint}}
   },
   "keywords": [
@@ -16,40 +16,35 @@
   "author": "",
   "devDependencies": {
     {{#lint}}
-    "eslint": "^5.0.1",
+    "eslint": "^6.8.0",
     {{/lint}}
-    {{#jest}}
-    "jest": "^23.3.0",
-    "jest-cli": "^23.3.0",
-    {{/jest}}
-    "moleculer-repl": "^0.5.0"
+    "jest": "^25.1.0",
+    "jest-cli": "^25.1.0",
+    "moleculer-repl": "^0.6.2"
   },
   "dependencies": {
-    {{#apiGW}}
-    "moleculer-web": "^0.8.0",
-    {{/apiGW}}
     {{#if_eq transporter "NATS"}}
-    "nats": "^1.0.0",
+    "nats": "^1.3.2",
     {{/if_eq}}
     {{#if_eq transporter "MQTT"}}
-    "mqtt": "^2.18.2",
+    "mqtt": "^3.0.0",
     {{/if_eq}}
     {{#if_eq transporter "AMQP"}}
-    "amqplib": "^0.5.2",
+    "amqplib": "^0.5.5",
     {{/if_eq}}    
     {{#if_eq transporter "STAN"}}
-    "node-nats-streaming": "0.0.40",
+    "node-nats-streaming": "^0.2.6",
     {{/if_eq}}    
     {{#if_eq transporter "Kafka"}}
-    "kafka-node": "2.6.1",
+    "kafka-node": "^5.0.0",
     {{/if_eq}}    
     {{#redis}}
-    "ioredis": "^3.2.2",
+    "ioredis": "^4.14.1",
     {{/redis}}
-    "moleculer": "^0.13.0"
+    "moleculer": "^0.14.0-rc2"
   },
   "engines": {
-    "node": ">= 8.x.x"
+    "node": ">= 10.x.x"
   }{{#jest}},
   "jest": {
     "coverageDirectory": "../coverage",    
