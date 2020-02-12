@@ -1,0 +1,8 @@
+{
+	"transporter": "TCP",
+	"needCacher": false,
+	"metrics": false,
+	"tracing": false,
+	"docker": true,
+	"lint": true
+}

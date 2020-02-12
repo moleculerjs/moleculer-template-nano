@@ -37,6 +37,18 @@ module.exports = function(values) {
 			},
 			{
 				type: "confirm",
+				name: "metrics",
+				message: "Would you like to enable metrics?",
+				default: true
+			},			
+			{
+				type: "confirm",
+				name: "tracing",
+				message: "Would you like to enable tracing?",
+				default: true
+			},			
+			{
+				type: "confirm",
 				name: "docker",
 				message: "Add Docker files?",
 				default: true
@@ -45,12 +57,6 @@ module.exports = function(values) {
 				type: "confirm",
 				name: "lint",
 				message: "Use ESLint to lint your code?",
-				default: true
-			},
-			{
-				type: "confirm",
-				name: "jest",
-				message: "Setup unit tests with Jest?",
 				default: true
 			}		
 		],
@@ -66,7 +72,6 @@ module.exports = function(values) {
 
 		"filters": {
 			".eslintrc.js": "lint",
-			"test/**/*": "jest",
 			".dockerignore": "docker",
 			"docker-compose.*": "docker",
 			"Dockerfile": "docker"
