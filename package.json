@@ -1,6 +1,6 @@
 {
   "name": "moleculer-template-nano",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Minimal project template for one microservice.",
   "main": "meta.js",
   "scripts": {
