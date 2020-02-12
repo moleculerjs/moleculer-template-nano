@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/moleculerjs/moleculer-template-nano#readme",
   "dependencies": {
-    "moleculer-cli": "github:moleculerjs/moleculer-cli",
+    "moleculer-cli": "^0.7.0",
     "rimraf": "^3.0.1"
   }
 }
