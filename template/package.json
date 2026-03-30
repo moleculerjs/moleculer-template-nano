@@ -44,7 +44,7 @@
     "node": ">= 22.x.x"
   }{{#jest}},
   "jest": {
-    "coverageDirectory": "../coverage",
+    "coverageDirectory": "./coverage",
     "testEnvironment": "node",
     "rootDir": "./",
     "roots": [
