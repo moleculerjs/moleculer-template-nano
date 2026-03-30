@@ -13,7 +13,6 @@ module.exports = function(values) {
 					{ name: "MQTT", value: "MQTT" },
 					{ name: "AMQP", value: "AMQP" },
 					{ name: "Redis", value: "Redis" },
-					{ name: "NATS Streaming", value: "STAN" },
 					{ name: "Kafka", value: "Kafka" }
 				],
 				default: "TCP"
@@ -40,25 +39,25 @@ module.exports = function(values) {
 				name: "metrics",
 				message: "Would you like to enable metrics?",
 				default: true
-			},			
+			},
 			{
 				type: "confirm",
 				name: "tracing",
 				message: "Would you like to enable tracing?",
 				default: true
-			},			
+			},
 			{
 				type: "confirm",
 				name: "docker",
-				message: "Add Docker files?",
+				message: "Add Docker & Docker Compose files?",
 				default: true
-			},			
+			},
 			{
 				type: "confirm",
 				name: "lint",
 				message: "Use ESLint to lint your code?",
 				default: true
-			}		
+			}
 		],
 
 		metalsmith: {
@@ -66,15 +65,16 @@ module.exports = function(values) {
 				const data = metalsmith.metadata();
 				data.needTransporter = !! data.transporter;
 				data.redis = data.cacher == "Redis" || data.transporter == "Redis";
-				data.hasDepends = (data.needCacher && data.cacher !== 'Memory') || (data.needTransporter && data.transporter != "TCP");
+				data.hasDepends = (data.needCacher && data.cacher !== "Memory") || (data.needTransporter && data.transporter != "TCP");
 			}
-		},		
+		},
 
 		"filters": {
-			".eslintrc.js": "lint",
+			"eslint.config.js": "lint",
 			".dockerignore": "docker",
 			"docker-compose.*": "docker",
-			"Dockerfile": "docker"
+			"Dockerfile": "docker",
+			"docker-compose.env": "docker"
 		},
 
 		completeMessage: `

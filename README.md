@@ -2,12 +2,12 @@
 :mortar_board: Minimal project template for one Moleculer microservice.
 
 ## Features
-- Moleculer v0.14.x with `moleculer.config.js`
+- Moleculer v0.15.x with `moleculer.config.js`
 - Simple project with a demo `greeter` service
 - Transporter & Cacher
 - Docker & Docker Compose files
 - Unit tests with [Jest](http://facebook.github.io/jest/)
-- Lint with [ESLint](http://eslint.org/)
+- Lint with [ESLint](http://eslint.org/) (flat config)
 - Launch file for debugging in [VSCode](https://code.visualstudio.com/)
 
 
@@ -23,20 +23,19 @@ $ moleculer init nano my-project
 $ moleculer init nano my-project
 
 Template repo: moleculerjs/moleculer-template-nano
-? Select a transporter NATS (recommended)
-? Would you like use cache? Yes
-? Select a cacher solution Memory
+? Select a transporter TCP
+? Would you like use cache? No
 ? Would you like to enable metrics? Yes
 ? Would you like to enable tracing? Yes
-? Add Docker files? Yes
+? Add Docker & Docker Compose files? Yes
 ? Use ESLint to lint your code? Yes
-Create 'moleculer-nano' folder...
+Create 'my-project' folder...
 ? Would you like to run 'npm install'? Yes
 ```
 
 ## NPM scripts
 - `npm run dev` - Start service.js with hot-reloading and REPL.
-- `npm lint` - Run linting
+- `npm run lint` - Run linting
 - `npm run ci` - Start testing in watch mode
 - `npm start` - Start service.js in production mode
 - `npm test` - Run tests & generate coverage report
@@ -45,6 +44,6 @@ Create 'moleculer-nano' folder...
 This template is available under the [MIT license](https://tldrlegal.com/license/mit-license).
 
 ## Contact
-Copyright (c) 2020 MoleculerJS
+Copyright (c) 2016-2026 MoleculerJS
 
 [![@moleculerjs](https://img.shields.io/badge/github-moleculerjs-green.svg)](https://github.com/moleculerjs) [![@MoleculerJS](https://img.shields.io/badge/twitter-MoleculerJS-blue.svg)](https://twitter.com/MoleculerJS)
