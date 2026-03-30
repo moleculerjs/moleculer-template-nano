@@ -30,10 +30,6 @@ module.exports = {
 		 * @returns
 		 */
 		hello: {
-			rest: {
-				method: "GET",
-				path: "/hello"
-			},
 			async handler() {
 				return "Hello Moleculer";
 			}
@@ -45,7 +41,6 @@ module.exports = {
 		 * @param {String} name - User name
 		 */
 		welcome: {
-			rest: "/welcome",
 			params: {
 				name: "string"
 			},

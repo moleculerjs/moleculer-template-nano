@@ -1,0 +1,85 @@
+services:
+
+  {{projectName}}:
+    build:
+      context: .
+    image: {{projectName}}
+    container_name: {{projectName}}
+    env_file: docker-compose.env
+    environment:
+      SERVICEDIR: /app
+{{#if hasDepends}}
+    depends_on:
+{{#if_eq transporter "NATS"}}
+      - nats
+{{/if_eq}}
+{{#if_eq transporter "MQTT"}}
+      - mqtt
+{{/if_eq}}
+{{#if_eq transporter "AMQP"}}
+      - rabbitmq
+{{/if_eq}}
+{{#if_eq transporter "Kafka"}}
+      - kafka
+{{/if_eq}}
+{{#redis}}
+      - redis
+{{/redis}}
+{{/if}}
+    networks:
+      - internal
+
+{{#if_eq transporter "NATS"}}
+  nats:
+    image: nats:2
+    command: -js
+    ports:
+      - "4222:4222"
+    networks:
+      - internal
+{{/if_eq}}
+{{#if_eq transporter "MQTT"}}
+  mqtt:
+    image: eclipse-mosquitto:2
+    ports:
+      - "1883:1883"
+    networks:
+      - internal
+{{/if_eq}}
+{{#if_eq transporter "AMQP"}}
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - internal
+{{/if_eq}}
+{{#if_eq transporter "Kafka"}}
+  kafka:
+    image: bitnami/kafka:3.9
+    environment:
+      KAFKA_CFG_NODE_ID: "1"
+      KAFKA_CFG_PROCESS_ROLES: broker,controller
+      KAFKA_CFG_CONTROLLER_QUORUM_VOTERS: 1@kafka:9093
+      KAFKA_CFG_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093
+      KAFKA_CFG_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_CFG_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      ALLOW_PLAINTEXT_LISTENER: "yes"
+    ports:
+      - "9092:9092"
+    networks:
+      - internal
+{{/if_eq}}
+{{#redis}}
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - internal
+{{/redis}}
+
+networks:
+  internal:

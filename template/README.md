@@ -1,7 +1,7 @@
 [![Moleculer](https://badgen.net/badge/Powered%20by/Moleculer/0e83cd)](https://moleculer.services)
 
 # {{projectName}}
-This is a [Moleculer](https://moleculer.services/)-based microservice. Generated with the [Moleculer CLI](https://moleculer.services/docs/0.14/moleculer-cli.html).
+This is a [Moleculer](https://moleculer.services/)-based microservice. Generated with the [Moleculer CLI](https://moleculer.services/docs/0.15/moleculer-cli.html).
 
 {{#docker}}
 ## Run in Docker
@@ -15,12 +15,17 @@ $ docker build -t {{projectName}} .
 ```bash
 $ docker run -d {{projectName}}
 ```
+
+**Start with Docker Compose**
+```bash
+$ docker compose up -d
+```
 {{/docker}}
 
 ## Useful links
 
 * Moleculer website: https://moleculer.services/
-* Moleculer Documentation: https://moleculer.services/docs/0.14/
+* Moleculer Documentation: https://moleculer.services/docs/0.15/
 
 ## NPM scripts
 
